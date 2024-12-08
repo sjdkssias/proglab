@@ -39,7 +39,6 @@ public class Wizard extends Person implements Magic {
 
     @Override
     public void speak(Person person) {
-
         System.out.println("Я тебя понимаю! - отвечает Волшебник");
     }
 

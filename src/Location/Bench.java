@@ -13,17 +13,6 @@ public class Bench {
         Arrays.fill(this.seats, null);
     }
 
-//    public boolean sitOn(Person person) {
-//        for (int i = 0; i < seats.length; i++) {
-//            if (seats[i] == null) {
-//                seats[i] = person;
-//                System.out.println(person.getName() + " сел на лавочку");
-//                return true;
-//            }
-//        }
-//        System.out.println("Нет свободных мест для " + person.getName() + ".");
-//        return false;
-//    }
 
     public boolean leave(Person person) {
         for (int i = 0; i < seats.length; i++) {
@@ -37,7 +26,7 @@ public class Bench {
         return false;
     }
     public void describeBench(){
-        System.out.println("Мы можем увидеть здесь лавочку.");
+        System.out.println("\nМы можем увидеть здесь лавочку.");
     }
     public void sitEx(Person person) throws NoSpace {
         if (!sit(person)) {

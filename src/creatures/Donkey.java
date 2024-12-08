@@ -1,14 +1,41 @@
 package creatures;
 
+import Location.Grass;
 import enums.Mood;
 import interfaces.AnimalAction;
 
 
 public class Donkey extends Creature implements AnimalAction {
+    private boolean isHungry;
     public Donkey(String name, Mood mood) {
         super(name, mood);
+        this.isHungry = calculateHungry(mood);
     }
-
+    public boolean calculateHungry(Mood mood){
+        switch (mood){
+            case HAPPY:
+                return false;
+            case ANGRY:
+                return true;
+            case SAD:
+                return true;
+            case NEITRAL:
+                return Math.random()<0.5;
+            default:
+                return false;
+        }
+    }
+    public void eatGrass(Grass grass){
+        if (isHungry==true&&grass.height>1){
+            grass.height -= 1;
+            isHungry = false;
+            mood = Mood.HAPPY;
+            System.out.println(name + " ест зеленую травку");
+        } else if(grass.height <= 1) {
+            mood = Mood.ANGRY;
+            System.out.println(name + " не может поесть травки, так как ему ее не хватило");
+        }
+    }
     @Override
     public void bite(Creature creature) {
         switch (mood) {
@@ -38,4 +65,6 @@ public class Donkey extends Creature implements AnimalAction {
             case NEITRAL -> System.out.println("Незаметно для других шевелит ушами");
         }
     }
+
+
 }

@@ -20,7 +20,7 @@ public abstract class Person extends Creature {
     }
 
     public void leaveBench(Bench bench) {
-        System.out.println(getName() + " встал с лавочки.");
+        System.out.println(name + " встал с лавочки.");
     }
 
 }

@@ -2,6 +2,7 @@
   <library name="https%3a%2f%2fmirrors.163">
     <CLASSES>
       <root url="file://$USER_HOME$/Downloads/https%3a%2f%2fmirrors.163.com%2fcygwin%2f" />
+      <root url="jar://$USER_HOME$/Downloads/plantuml-1.2024.8.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

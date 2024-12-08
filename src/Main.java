@@ -1,6 +1,7 @@
 import Items.Broom;
 import Items.Handkerchief;
 import Location.Bench;
+import Location.Grass;
 import Location.Meadow;
 import Location.Tree;
 import creatures.*;
@@ -21,6 +22,7 @@ public static void main(String[] args) {
     Meadow meadow = new Meadow(20);
     Bench bench = new Bench(2);
     Tree tree = new Tree("Ель", 20);
+    Grass grass = new Grass();
     Weather rr = Weather.getRandomWeather();
     Handkerchief handkerchief = new Handkerchief("платок", cleaner, Color.getRandomColor());
     Broom broom = new Broom("метла", cleaner, Color.getRandomColor());
@@ -32,26 +34,29 @@ public static void main(String[] args) {
     neznaika.sitWith(wizard);
     wizard.reaction(rr);
 
-    ArrayList<Creature> creatures = new ArrayList<>();
+    ArrayList<Donkey> creatures = new ArrayList<>();
     creatures.add(donkey1);
     creatures.add(donkey2);
     creatures.add(mool);
     System.out.print("\nВ это время на дорожке показались ");
-    for (Creature creature : creatures){
+    for (Donkey creature : creatures){
         System.out.print(creature.getName() + " ");
     }
     System.out.println();
     cleaner.go();
     cleaner.wear(handkerchief);
-    donkey1.go();
-    donkey2.go();
-    mool.go();
-    donkey1.bite(neznaika);
-    donkey2.bite(neznaika);
-    mool.bite(neznaika);
-    neznaika.wasBited(donkey1);
-    neznaika.wasBited(donkey2);
-    neznaika.wasBited(mool);
+    for (Donkey creature: creatures){
+        creature.go();
+    }
+    for (Donkey creature : creatures){
+        creature.eatGrass(grass);
+    }
+    for (Donkey creature : creatures){
+        creature.bite(neznaika);
+    }
+    for (Donkey creature : creatures){
+        neznaika.wasBited(creature);
+    }
     neznaika.checkHealth();
     neznaika.speak(wizard);
     wizard.speak(neznaika);
@@ -66,5 +71,5 @@ public static void main(String[] args) {
     //персонажи уходят
     wizard.go();
     neznaika.go();
-    System.out.println("\nИстория подошла к концу. Все герои разошлись , а на лугу нова стала спокойно.");
+    System.out.println("\nИстория подошла к концу. Все герои разошлись , а на лугу cнова стало спокойно.");
 }
