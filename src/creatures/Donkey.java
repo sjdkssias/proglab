@@ -26,14 +26,19 @@ public class Donkey extends Creature implements AnimalAction {
         }
     }
     public void eatGrass(Grass grass){
-        if (isHungry==true&&grass.height>1){
+        if ((isHungry==true)&&(grass.height>1)&&(grass.dryOrNot==false)){
             grass.height -= 1;
             isHungry = false;
             mood = Mood.HAPPY;
             System.out.println(name + " ест зеленую травку");
-        } else if(grass.height <= 1) {
+        } else if(isHungry==true&&grass.height <= 1) {
             mood = Mood.ANGRY;
             System.out.println(name + " не может поесть травки, так как ему ее не хватило");
+        } else if(isHungry==true&&grass.dryOrNot==true) {
+            mood = Mood.ANGRY;
+            System.out.println(name + " не может поесть травки, так как она сухая");
+        } else if (isHungry==false) {
+            System.out.println(name + " не голоден");
         }
     }
     @Override

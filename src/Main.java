@@ -19,11 +19,11 @@ public static void main(String[] args) {
     Cleaner cleaner = new Cleaner("Уборщица", Mood.getRandomMood());
     Neznaika neznaika = new Neznaika("Незнайка", Mood.getRandomMood());
     Wizard wizard = new Wizard("Волшебник", Mood.getRandomMood());
+    Weather rr = Weather.getRandomWeather();
     Meadow meadow = new Meadow(20);
     Bench bench = new Bench(2);
     Tree tree = new Tree("Ель", 20);
-    Grass grass = new Grass();
-    Weather rr = Weather.getRandomWeather();
+    Grass grass = new Grass(rr);
     Handkerchief handkerchief = new Handkerchief("платок", cleaner, Color.getRandomColor());
     Broom broom = new Broom("метла", cleaner, Color.getRandomColor());
     meadow.describeMeadow();
